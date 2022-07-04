@@ -5,6 +5,8 @@ table {
     margin: auto;
     border-collapse: collapse;
     text-align: center;
+    min-width: 1520px;
+    min-height: 700px;
 }
 table th, td{
     border: 1px solid lightgray;
