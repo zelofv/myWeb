@@ -1,0 +1,38 @@
+table {
+    font-family: "黑体";
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: auto;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 1520px;
+    min-height: 700px;
+}
+table th, td{
+    border: 1px solid lightgray;
+}
+th, td {
+    padding: 8px 14px 8px 14px;
+}
+
+caption {
+    caption-side: top;
+    padding-bottom: 5px;
+}
+
+th.leftAndRight {
+    border-left: 2px inset black;
+    border-right: 2px inset black;
+}
+
+table.color th{
+   background-color: rgb(235, 235, 235);
+}
+
+.sColor td{
+    background-color: rgb(245, 245, 245);
+}
+
+.dColor td{
+    background-color: rgb(250, 250, 250);
+}

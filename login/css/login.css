@@ -1,0 +1,95 @@
+body {
+    background-image: url("../img/1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+div.card {
+    margin: 15% 35%;
+    min-width: 400px;
+    width: 420px;
+    height: 260px;
+    border-radius: 10px;
+    background-color: rgba(242, 242, 242, 0.5);
+    padding: 20px;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
+}
+
+div.smallCard {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+div.smallCard:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+label.lStyle {
+    padding: 12px;
+    display: inline-block;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin: -10px 0 10px 0;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px 12px 40px;
+    width: 70%;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
+}
+
+input[type=text] {
+    background-image: url("../img/account.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+input[type=password] {
+    background-image: url("../img/password.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+input[type=submit], input[type=text], input[type=password] {
+    display: inline-block;
+    margin: 0 8%;
+    border-radius: 3px;
+}
+
+input[type=submit] {
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    background-color: #005CAF;
+    box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+input[type=submit]:hover {
+    background-color: lightgray;
+}
+
+a:visited {
+    color: #0000ee;
+}
+
+input::-webkit-input-placeholder {
+    color: black;
+}

@@ -1,0 +1,63 @@
+table {
+    font-family: "黑体", sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: 5px auto auto;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 1500px;
+    min-height: 700px;
+}
+
+table th, td {
+    border: 1px solid lightgray;
+}
+
+th, td {
+    padding: 8px 12px 8px 12px;
+}
+
+caption {
+    caption-side: top;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+th.leftAndRight {
+    border-left: 2px inset black;
+    border-right: 2px inset black;
+}
+
+table.color th {
+    background-color: rgb(235, 235, 235);
+}
+
+.sColor td {
+    background-color: rgb(245, 245, 245);
+}
+
+.dColor td {
+    background-color: rgb(250, 250, 250);
+}
+
+div.navigate {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+    max-height: 52px;
+}
+
+span.navigate, a.navigate {
+    float: right;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+}
+
+span.navigate:hover, a.navigate:hover {
+    background-color: #111111;
+}
