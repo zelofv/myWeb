@@ -5,16 +5,25 @@ body {
     text-align: center;
 }
 
-div.card {
-    margin: 15% 35%;
+div.card, div.retrieveCard{
+    margin: 12% auto;
     min-width: 400px;
     width: 420px;
-    height: 260px;
+    height: 330px;
     border-radius: 10px;
     background-color: rgba(242, 242, 242, 0.5);
     padding: 20px;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
+}
+
+div.card div.smallCard {
+    margin: 30px 0;
+}
+
+div.retrieveCard div.smallCard {
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 div.smallCard {
@@ -33,10 +42,10 @@ label.lStyle {
     display: inline-block;
     font-size: 30px;
     letter-spacing: 2px;
-    margin: -10px 0 10px 0;
+    margin: 0;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
     padding: 12px 20px 12px 40px;
     width: 70%;
     border: none;
@@ -59,7 +68,15 @@ input[type=password] {
     background-size: 20px;
 }
 
-input[type=submit], input[type=text], input[type=password] {
+input[type=email] {
+    background-image: url("../img/email.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+input[type=submit], input[type=text],
+input[type=password], input[type=email] {
     display: inline-block;
     margin: 0 8%;
     border-radius: 3px;
@@ -78,12 +95,48 @@ input[type=submit] {
     box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus,
+input[type=email]:focus {
     background-color: rgba(0, 0, 0, 0);
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button[type=button]:hover {
     background-color: lightgray;
+    box-shadow: 1px 6px 16px 1px rgba(0, 0, 0, 0.5);
+}
+
+div.acquire {
+    display: inline-block;
+    margin-left: -18px;
+}
+
+div.acquire input[type=text] {
+    background-image: url("../img/password.png");
+    width: 50%;
+    float: left;
+    margin-left: -45px;
+}
+
+div.acquire button {
+    width: 35%;
+    margin-right: -20px;
+    margin-top: 3px;
+    float: right;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: white;
+    border-radius: 3px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #005CAF;
+    box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
+}
+
+div.retrieveCard {
+    display: none;
+    margin-top: -78.9%;
+    margin-left: -4.8%;
+    /*transform: rotateY(180deg);*/
 }
 
 a:visited {

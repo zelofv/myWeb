@@ -6,7 +6,7 @@ body {
 }
 
 div.card {
-    margin: 10% 35%;
+    margin: 10% auto;
     min-width: 400px;
     width: 420px;
     height: 410px;
@@ -33,7 +33,7 @@ label.lStyle {
     display: inline-block;
     font-size: 28px;
     letter-spacing: 2px;
-    margin: -10px 0 10px 0;
+    margin: -10px 0 10px -70px;
 }
 
 input[type=text].yourAccount {
@@ -69,7 +69,7 @@ input[type=text], input[type=password], input[type=email] {
     width: 70%;
     border: none;
     outline: none;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
 }
 
@@ -108,4 +108,34 @@ a:visited {
 
 input::-webkit-input-placeholder {
     color: black;
+}
+
+a.back {
+    padding: 4px;
+    margin-left: 15px;
+    float: left;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    background: #005CAF;
+    color: white;
+    line-height: 1.5;
+    border-radius: 4px;
+    box-shadow: 0 6px 8px 0 rgba(78, 73, 79, 0.5);
+}
+
+a.back:before,
+a.back:after {
+    margin-left: -5.3px;
+    position: absolute;
+    content: " ";
+}
+
+a.back:before {
+    border: transparent 1em solid;
+    border-right-color: #005CAF;
+    top: 0;
+    left: -1.5em;
+    height: 0;
+    width: 0;
 }

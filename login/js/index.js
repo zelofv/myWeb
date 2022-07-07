@@ -1,4 +1,4 @@
-const on = JSON.parse(sessionStorage.getItem("on"));
+const on = JSON.parse(localStorage.getItem("on"));
 const account = JSON.parse(localStorage.getItem(on.account));
 
 function check() {
@@ -15,8 +15,8 @@ function check() {
 function cancel() {
     if (confirmCancel()) {
         on.isOn = false;
-        sessionStorage.removeItem("on");
-        sessionStorage.setItem("on", JSON.stringify(on));
+        localStorage.removeItem("on");
+        localStorage.setItem("on", JSON.stringify(on));
         alert("注销成功，请重新登录");
         location.reload();
         // check();

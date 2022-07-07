@@ -1,4 +1,3 @@
-
 function validateForm() {
     let account = document.forms["rForm"]["rAccount"].value;
     let rName = document.forms["rForm"]["rName"].value;
@@ -10,9 +9,7 @@ function validateForm() {
         return false;
     }
 
-    if (/^[\d a-z A-Z]{3,15}$/.test(account)) {
-
-    } else {
+    if (!(/^[\d a-z A-Z]{3,15}$/.test(account))) {
         alert("用户名应为数字，英文，且长度限制在3-15个字符。");
         return false;
     }
@@ -22,9 +19,7 @@ function validateForm() {
         return false;
     }
 
-    if (/^[\d a-z A-Z \u4e00-\u9fa5]{3,20}$/.test(rName)) {
-
-    } else {
+    if (!(/^[\d a-z A-Z \u4e00-\u9fa5]{3,20}$/.test(rName))) {
         alert("昵称应为中文，英文，数字，且长度3-20个字符。");
         return false;
     }
@@ -47,11 +42,10 @@ function validateForm() {
     }
     if (password !== pwd) {
         alert("密码输入不一致");
+        return false;
     }
 
-    if (/^[\d a-z A-Z]{6,20}$/.test(password)) {
-
-    } else {
+    if (!(/^[\d a-z A-Z]{6,20}$/.test(password))) {
         alert("密码应为英文或数字，长度为在6-20个字符");
         return false;
     }
@@ -78,7 +72,7 @@ function register() {
                 return false;
             }
 
-            localStorage.setItem(user.myName, JSON.stringify(user));
+            localStorage.setItem(user.myId, JSON.stringify(user));
             localStorage.setItem(user.myEmail, JSON.stringify(user));
             alert("注册成功，快去登录吧！");
 
@@ -97,5 +91,16 @@ function register() {
         }
     } else {
         return false;
+    }
+}
+
+const on = JSON.parse(localStorage.getItem("on"));
+const account = JSON.parse(localStorage.getItem(on.account));
+
+function check() {
+    if (on != null && on.isOn && account != null) {
+        if (account.myId === on.account && on.pwd === account.myPassword) {
+            window.location.href = "../html/index.html";
+        }
     }
 }

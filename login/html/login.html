@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
-<body>
+<body onload="check();">
 
 <div class="card">
+    <div id="loginCard">
     <form name="lForm" action="#" onsubmit="login()" method="post" target="iframe">
         <div>
             <label class="lStyle"><b>LOGIN</b></label>
@@ -28,49 +29,54 @@
             <div class="smallCard">
                 <input type="submit" value="Login">
             </div>
-            <div class="switch">
+            <div>
             <span>
                 <a href="register.html">register</a> |
-                <span style="color: #0000ee; text-decoration: underline" for="change">forget ?</span>
+                <span style="color: #0000ee; text-decoration: underline" onclick="switchMenu()">forget ?</span>
             </span>
             </div>
         </div>
     </form>
-
+    </div>
     <iframe id="iframe" name="iframe" style="display:none;"></iframe>
 
+    <div id="retrieveCard" class="retrieveCard">
+        <form name="reForm" onsubmit="retrieve()" target="iframe">
+            <div>
+                <label class="lStyle"><b>retrieve password</b></label>
+            </div>
+            <div class="smallCard">
+
+                <div>
+                    <input type="email" name="reEmail" placeholder="Your Email...">
+                </div>
+            </div>
+            <div class="smallCard">
+
+                <div class="acquire">
+                    <input style="background-image: url('../img/retrieve.png')" name="reCode" type="text"
+                           placeholder="Verification Code...">
+                    <button type="button" onclick="getVerificationCode()">acquire</button>
+                </div>
+            </div>
+            <div class="smallCard">
+                <div>
+                    <input type="password" name="rePwd" placeholder="Your Password...">
+                </div>
+            </div>
+            <div>
+                <div class="smallCard">
+                    <input type="submit" value="Retrieve">
+                </div>
+                <div class="switch">
+
+                    <span style="color: #0000ee; text-decoration: underline" onclick="switchMenuA()">return</span>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
 </div>
-<!--<div class="card">-->
-<!--    <form action="">-->
-<!--        <div>-->
-<!--            <label class="lStyle"><b>Login</b></label>-->
-<!--        </div>-->
-<!--        <div class="smallCard">-->
-
-<!--            <div>-->
-<!--                <input type="text" placeholder="Your Name...">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="smallCard">-->
-
-<!--            <div>-->
-<!--                <input type="password" placeholder="Your Password...">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <div class="smallCard">-->
-<!--                <input type="submit" value="Login">-->
-<!--            </div>-->
-<!--            <div class="switch">-->
-<!--            <span>-->
-<!--                <a href="register.html">register</a> |-->
-<!--                <span style="color: #0000ee; text-decoration: underline" for="change">forget ?</span>-->
-<!--            </span>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-
-<!--</div>-->
-
 </body>
 </html>
