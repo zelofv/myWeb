@@ -15,13 +15,14 @@ div.card {
     padding: 20px;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
+    animation: myFirst 1.5s;
 }
 
 div.smallCard {
     margin-top: 5px;
     margin-bottom: 20px;
 }
-
+/* 清除行后浮动 */
 div.smallCard:after {
     content: "";
     display: table;
@@ -35,7 +36,7 @@ label.lStyle {
     letter-spacing: 2px;
     margin: -10px 0 10px -70px;
 }
-
+/* 输入框前加入图像 */
 input[type=text].yourAccount {
     background-image: url("../img/account.png");
     background-position: 10px 10px;
@@ -105,11 +106,11 @@ input[type=submit]:hover {
 a:visited {
     color: #0000ee;
 }
-
+/* 修改 placeholder 文字颜色 */
 input::-webkit-input-placeholder {
     color: black;
 }
-
+/* 返回按钮设置 */
 a.back {
     padding: 4px;
     margin-left: 15px;
@@ -130,7 +131,7 @@ a.back:after {
     position: absolute;
     content: " ";
 }
-
+/* 设置三角 */
 a.back:before {
     border: transparent 1em solid;
     border-right-color: #005CAF;
@@ -138,4 +139,13 @@ a.back:before {
     left: -1.5em;
     height: 0;
     width: 0;
+}
+/* 动画 */
+@keyframes myFirst {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
 }

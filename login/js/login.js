@@ -1,3 +1,4 @@
+// 表单验证
 function validateForm(account, password) {
     // return isID(account) && isPwd(password);
     if (/@/.test(account)) {
@@ -47,6 +48,7 @@ function isPwd(password) {
     return true;
 }
 
+// 点击 Login 时进行验证
 function login() {
     let theAccount = document.forms["lForm"]["lAccount"].value;
     let thePwd = document.forms["lForm"]["lPwd"].value;
@@ -59,11 +61,12 @@ function login() {
     if (validateForm(theAccount, thePwd)) {
         if (typeof (Storage) !== "undefined") {
             let findAccount = localStorage.getItem(theAccount);
-
+            // 判断登录用户是否存在
             if (findAccount != null) {
                 if (thePwd === JSON.parse(findAccount).myPassword) {
                     on.account = JSON.parse(findAccount).myId;
                     on.isOn = true;
+                    // 将 on 写入到 localStorage , on.isOn = true 表示已登录
                     if (localStorage.getItem("on") != null) {
                         localStorage.removeItem("on");
                     }
@@ -89,19 +92,25 @@ function login() {
     return false;
 }
 
+// 验证是否存在登录状态 已登录则跳转首页
 function check() {
     const on = JSON.parse(localStorage.getItem("on"));
-    const account = JSON.parse(localStorage.getItem(on.account));
-    if (on != null && on.isOn && account != null) {
-        if (account.myId === on.account && account.myPassword === on.pwd) {
-            window.location.href = "../html/index.html";
+    if (on != null && on.isOn) {
+        const account = JSON.parse(localStorage.getItem(on.account));
+        if (account != null) {
+            if (account.myId === on.account && account.myPassword === on.pwd) {
+                window.location.href = "../html/index.html";
+            }
         }
     }
 }
 
+//切换至 retrieve 界面
 function switchMenu() {
     const loginCard = document.getElementById('loginCard');
     const retrieveCard = document.getElementById('retrieveCard');
+    const card = document.getElementById("card");
+    card.style.animation = "myFirst 1.5s";
     loginCard.style.display = "none";
     loginCard.style.backgroundColor = "rgba(0,0,0,0)";
     retrieveCard.style.backgroundColor = "rgba(0,0,0,0)";
@@ -109,13 +118,17 @@ function switchMenu() {
     retrieveCard.style.margin = "-4.8%";
 }
 
+//切换至 login 界面
 function switchMenuA() {
     const loginCard = document.getElementById('loginCard');
     const retrieveCard = document.getElementById('retrieveCard');
+    const card = document.getElementById("card");
+    card.style.animation = "mySecond 1.5s";
     retrieveCard.style.display = "none";
     loginCard.style.display = "block";
 }
 
+// 获取验证码
 function getVerificationCode() {
     let email = document.forms['reForm']["reEmail"].value;
     if (trueReEmail(email)) {
@@ -128,8 +141,9 @@ function getVerificationCode() {
         }
         sessionStorage.setItem('code', vCode);
         alert("您的验证码是: " + vCode);
-    } else {
-        alert('您输入的邮箱不正确');
+    } else if (email !== "") {
+        alert('您输入的邮箱有误');
+        return false;
     }
 }
 
@@ -137,6 +151,7 @@ function trueReEmail(email) {
     return isEmail(email) && localStorage.getItem(document.forms['reForm']['reEmail'].value) != null;
 }
 
+// 判断验证码是否正确
 function isVerificationCode(code) {
     if (sessionStorage.getItem('code') == null) {
         return false;
@@ -147,29 +162,39 @@ function isVerificationCode(code) {
     }
 }
 
+// 找回密码
 function retrieve() {
     let code = document.forms['reForm']['reCode'].value;
     let email = document.forms['reForm']['reEmail'].value;
     let password = document.forms['reForm']['rePwd'].value;
-    if (trueReEmail(email)&& isPwd(password)) {
-        if (isVerificationCode(code)) {
-            let account = JSON.parse(localStorage.getItem(document.forms['reForm']['reEmail'].value));
-            account.myPassword = password;
-            localStorage.removeItem(account.myId);
-            localStorage.removeItem(account.myEmail);
-            localStorage.setItem(account.myId, JSON.stringify(account));
-            localStorage.setItem(account.myEmail, JSON.stringify(account));
-            removeCode();
-            alert('密码找回成功！快去登录吧');
-        } else {
-            alert('验证码错误');
-            return false;
+    if (trueReEmail(email)) {
+        if (isPwd(password)) {
+            if (isVerificationCode(code)) {
+                let account = JSON.parse(localStorage.getItem(document.forms['reForm']['reEmail'].value));
+                account.myPassword = password;
+                // 重新写入信息
+                localStorage.removeItem(account.myId);
+                localStorage.removeItem(account.myEmail);
+                localStorage.setItem(account.myId, JSON.stringify(account));
+                localStorage.setItem(account.myEmail, JSON.stringify(account));
+                removeCode();
+                document.forms['reForm']['reCode'].value = "";
+                document.forms['reForm']['reEmail'].value = "";
+                document.forms['reForm']['rePwd'].value = "";
+                alert('密码找回成功！快去登录吧');
+                switchMenuA();
+            } else {
+                alert('验证码错误');
+                return false;
+            }
         }
-    } else {
-        alert("您输入的邮箱不正确");
+    } else if (email !== "") {
+        alert("您输入的邮箱有误");
+        return false;
     }
 }
 
+// 从 sessionStorage 中移除验证码
 function removeCode() {
     if (sessionStorage.getItem('code') != null) {
         sessionStorage.removeItem('code');

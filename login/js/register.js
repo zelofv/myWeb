@@ -1,3 +1,4 @@
+// 表单验证
 function validateForm() {
     let account = document.forms["rForm"]["rAccount"].value;
     let rName = document.forms["rForm"]["rName"].value;
@@ -52,6 +53,7 @@ function validateForm() {
     return true;
 }
 
+// 注册判断
 function register() {
 
     let user = {
@@ -61,17 +63,17 @@ function register() {
         myPassword: document.forms["rForm"]["rPwd"].value,
     };
 
-    if (validateForm()) {
-        if (typeof (Storage) !== "undefined") {
-            if (localStorage.getItem(user.myId) != null) {
-                alert("用户名已被注册");
-                return false;
-            }
-            if (localStorage.getItem(user.myEmail) != null) {
-                alert("该邮箱已被注册");
-                return false;
-            }
 
+    if (typeof (Storage) !== "undefined") {
+        if (localStorage.getItem(user.myId) != null) {
+            alert("用户名已被注册");
+            return false;
+        }
+        if (localStorage.getItem(user.myEmail) != null) {
+            alert("该邮箱已被注册");
+            return false;
+        }
+        if (validateForm()) {
             localStorage.setItem(user.myId, JSON.stringify(user));
             localStorage.setItem(user.myEmail, JSON.stringify(user));
             alert("注册成功，快去登录吧！");
@@ -81,26 +83,28 @@ function register() {
             document.forms["rForm"]["rEmail"].value = "";
             document.forms["rForm"]["rPwd"].value = "";
             document.forms["rForm"]["rPwdA"].value = "";
-
+            //延时跳转登录页
             setTimeout(function () {
                 window.location.href = '../html/login.html';
-            }, 2000);
-
+            }, 1000);
         } else {
-            alert("浏览器不支持，请更换浏览器。");
+            return false;
         }
     } else {
-        return false;
+        alert("浏览器不支持，请更换浏览器。");
     }
+
 }
 
+// 检查登录状态
 const on = JSON.parse(localStorage.getItem("on"));
-const account = JSON.parse(localStorage.getItem(on.account));
-
 function check() {
-    if (on != null && on.isOn && account != null) {
-        if (account.myId === on.account && on.pwd === account.myPassword) {
-            window.location.href = "../html/index.html";
+    if (on != null && on.isOn) {
+        const account = JSON.parse(localStorage.getItem(on.account));
+        if (account != null) {
+            if (account.myId === on.account && account.myPassword === on.pwd) {
+                window.location.href = "../html/index.html";
+            }
         }
     }
 }

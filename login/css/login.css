@@ -5,7 +5,8 @@ body {
     text-align: center;
 }
 
-div.card, div.retrieveCard{
+div.card, div.retrieveCard {
+    perspective: 500px;
     margin: 12% auto;
     min-width: 400px;
     width: 420px;
@@ -53,7 +54,7 @@ input[type=text], input[type=password], input[type=email] {
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 8px 0 rgba(78, 73, 79, 0.5);
 }
-
+/* 输入框前加入图像 */
 input[type=text] {
     background-image: url("../img/account.png");
     background-position: 10px 10px;
@@ -142,7 +143,25 @@ div.retrieveCard {
 a:visited {
     color: #0000ee;
 }
-
+/* 修改 placeholder 文字颜色 */
 input::-webkit-input-placeholder {
     color: black;
+}
+    /* 动画 */
+@keyframes myFirst {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+    transform: rotateY(360deg);
+    }
+}
+
+@keyframes mySecond {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+    transform: rotateY(360deg);
+    }
 }
