@@ -9,7 +9,7 @@ function validateForm(account, password) {
 }
 
 function isID(account) {
-    if (account == null || account == "") {
+    if (account == null || account === "") {
         alert("用户名必须填写");
         return false;
     }
@@ -36,7 +36,7 @@ function isEmail(email) {
 }
 
 function isPwd(password) {
-    if (password == null || password == "") {
+    if (password == null || password === "") {
         alert("密码必须填写");
         return false;
     }
@@ -67,9 +67,9 @@ function login() {
                     on.account = JSON.parse(findAccount).myId;
                     on.isOn = true;
                     // 将 on 写入到 localStorage , on.isOn = true 表示已登录
-                    if (localStorage.getItem("on") != null) {
-                        localStorage.removeItem("on");
-                    }
+                    // if (localStorage.getItem("on") != null) {
+                    //     localStorage.removeItem("on");
+                    // }
                     localStorage.setItem("on", JSON.stringify(on));
                     alert("登录成功");
                     document.forms["lForm"]["lAccount"].value = "";
@@ -136,9 +136,9 @@ function getVerificationCode() {
         for (let i = 0; i < 6; i++) {
             vCode += Math.floor(Math.random() * 10);
         }
-        if (sessionStorage.getItem("code") != null) {
-            sessionStorage.removeItem("code");
-        }
+        // if (sessionStorage.getItem("code") != null) {
+        //     sessionStorage.removeItem("code");
+        // }
         sessionStorage.setItem('code', vCode);
         alert("您的验证码是: " + vCode);
     } else if (email !== "") {
@@ -173,8 +173,8 @@ function retrieve() {
                 let account = JSON.parse(localStorage.getItem(document.forms['reForm']['reEmail'].value));
                 account.myPassword = password;
                 // 重新写入信息
-                localStorage.removeItem(account.myId);
-                localStorage.removeItem(account.myEmail);
+                // localStorage.removeItem(account.myId);
+                // localStorage.removeItem(account.myEmail);
                 localStorage.setItem(account.myId, JSON.stringify(account));
                 localStorage.setItem(account.myEmail, JSON.stringify(account));
                 removeCode();

@@ -61,3 +61,12 @@ span.navigate, a.navigate {
 span.navigate:hover, a.navigate:hover {
     background-color: #111111;
 }
+
+@media screen and (max-width: 400px) {
+    div.navigate span {
+        display: none;
+    }
+    #userName {
+        display: block;
+    }
+}

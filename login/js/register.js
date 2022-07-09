@@ -5,7 +5,31 @@ function validateForm() {
     let email = document.forms["rForm"]["rEmail"].value;
     let password = document.forms["rForm"]["rPwd"].value;
     let pwd = document.forms["rForm"]["rPwdA"].value;
-    if (account == null || account == "") {
+
+    if (trueAccount(account) && trueName(rName) && trueEmail(email)) {
+        if (password == null || password === ""
+            && pwd == null || pwd === "") {
+            alert("密码必须填写");
+            return false;
+        }
+        if (password !== pwd) {
+            alert("密码输入不一致");
+            return false;
+        }
+
+        if (!(/^[\d a-z A-Z]{6,20}$/.test(password))) {
+            alert("密码应为英文或数字，长度为在6-20个字符");
+            return false;
+        }
+    } else {
+        return false;
+    }
+
+    return true;
+}
+
+function trueAccount(account) {
+    if (account == null || account === "") {
         alert("用户名必须填写");
         return false;
     }
@@ -14,8 +38,11 @@ function validateForm() {
         alert("用户名应为数字，英文，且长度限制在3-15个字符。");
         return false;
     }
+    return true;
+}
 
-    if (rName == null || rName == "") {
+function trueName(rName) {
+    if (rName == null || rName === "") {
         alert("昵称必须填写");
         return false;
     }
@@ -24,8 +51,11 @@ function validateForm() {
         alert("昵称应为中文，英文，数字，且长度3-20个字符。");
         return false;
     }
+    return true;
+}
 
-    if (email == null || email == "") {
+function trueEmail(email) {
+    if (email == null || email === "") {
         alert("邮箱必须填写");
         return false;
     }
@@ -33,21 +63,6 @@ function validateForm() {
     let dotPos = email.lastIndexOf(".");
     if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length) {
         alert("不是一个有效的 e-mail 地址");
-        return false;
-    }
-
-    if (password == null || password == ""
-        && pwd == null || pwd == "") {
-        alert("密码必须填写");
-        return false;
-    }
-    if (password !== pwd) {
-        alert("密码输入不一致");
-        return false;
-    }
-
-    if (!(/^[\d a-z A-Z]{6,20}$/.test(password))) {
-        alert("密码应为英文或数字，长度为在6-20个字符");
         return false;
     }
     return true;
@@ -98,6 +113,7 @@ function register() {
 
 // 检查登录状态
 const on = JSON.parse(localStorage.getItem("on"));
+
 function check() {
     if (on != null && on.isOn) {
         const account = JSON.parse(localStorage.getItem(on.account));

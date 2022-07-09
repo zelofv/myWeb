@@ -2,18 +2,15 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <script src="../js/index.js"></script>
     <meta charset="utf-8">
     <title>首页</title>
-    <script type="text/javascript">
-        window.onload = check;
-    </script>
 </head>
-<body>
+<body onload="check();">
 
 <div class="navigate">
     <a class="navigate" href="#" style="float: left">首页</a>
     <span class="navigate" onclick="cancel()">注销</span>
+    <span class="navigate" onclick="toChange()">修改密码</span>
     <span class="navigate" onclick="displayName()" id="userName">用户</span>
     <span class="navigate">欢迎</span>
 </div>
@@ -160,6 +157,6 @@
         <td>2006年降格，但<a href="#">尚存争议</a>。</td>
     </tr>
 </table>
-
+<script src="../js/index.js"></script>
 </body>
 </html>
