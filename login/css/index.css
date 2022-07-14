@@ -40,7 +40,7 @@ table.color th {
     background-color: rgb(250, 250, 250);
 }
 /* 导航栏 */
-div.navigate {
+div.navigation {
     width: 100%;
     margin-top: 0;
     padding: 0;
@@ -49,7 +49,7 @@ div.navigate {
     max-height: 52px;
 }
 
-span.navigate, a.navigate {
+span.navigation, a.navigation {
     float: right;
     color: white;
     display: block;
@@ -58,12 +58,12 @@ span.navigate, a.navigate {
     text-decoration: none;
 }
 
-span.navigate:hover, a.navigate:hover {
+span.navigation:hover, a.navigation:hover {
     background-color: #111111;
 }
 
 @media screen and (max-width: 400px) {
-    div.navigate span {
+    div.navigation span {
         display: none;
     }
     #userName {
